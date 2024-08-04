@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: "test"
+    password: "test"
+    url: "jdbc:postgresql://localhost:5481/test"
+  flyway:
+    locations: classpath:db/migration
+
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    topics:
+      first-topic:
+        name: "com.szalai.eventdriven.publish.topic.v1"
+      second-topic:
+        name: "com.szalai.eventdriven.book.topic.v1"
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: "http://localhost:8089"
+
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      group-id: "spring-boot-avro-consumer-id"
+      properties:
+        schema:
+          registry:
+            url: "http://localhost:8089"
+        specific:
+          avro:
+            reader: "true"
+
+    properties:
+      auto:
+        register:
+          schemas: true
+

@@ -1,0 +1,11 @@
+[
+  {
+    "namespace": "com.eventdriven.common.schema",
+    "name": "BookSchema",
+    "type": "record",
+    "fields": [
+      {"name": "isbn","type": "string"},
+      {"name": "title","type": "string"}
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "namespace": "com.eventdriven.common.schema",
+    "name": "PublishSchema",
+    "type": "record",
+    "fields": [
+      {"name": "isbn","type": "string"},
+      {"name": "title","type": "string"},
+      {"name": "author_name","type": "string"},
+      {"name": "author_age","type": "int"}
+    ]
+  }
+]
