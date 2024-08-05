@@ -14,7 +14,7 @@ spring:
     bootstrap-servers: "localhost:9092"
     topics:
       first-topic:
-        name: "com.szalai.eventdriven.publish.topic.v1"
+        name: "com.eventdriven.publish.topic.v1"
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
